@@ -118,7 +118,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const result = await axios.get(
-          "http://localhost:5000/api/auth/get-current-user",
+          `${SERVER_URL}/api/auth/get-current-user`,
           { withCredentials: true }
         );
 
