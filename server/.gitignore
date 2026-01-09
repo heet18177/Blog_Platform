@@ -1,0 +1,10 @@
+# General
+.DS_Store
+.vscode/
+*.log
+
+# Dependencies
+node_modules/
+
+# Environment
+.env

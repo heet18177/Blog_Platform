@@ -1,0 +1,27 @@
+# Client Installation Guide
+
+## Dependencies
+Run the following command in the `client` directory:
+
+```bash
+npm install @radix-ui/react-slot @reduxjs/toolkit @tiptap/react @tiptap/starter-kit @tailwindcss/typography axios class-variance-authority clsx lucide-react next-themes react react-dom react-icons react-redux react-router-dom sonner tailwind-merge tailwindcss tailwindcss-animate
+```
+
+### Package Descriptions:
+- **@radix-ui/react-slot**: Unstyled component for composition.
+- **@reduxjs/toolkit**: The official, opinionated, batteries-included toolset for efficient Redux development.
+- **@tiptap/react** & **@tiptap/starter-kit**: Headless rich text editor framework for React.
+- **@tailwindcss/typography**: Tailwind CSS plugin for beautiful typographic defaults.
+- **axios**: Promise-based HTTP client for the browser and Node.js.
+- **class-variance-authority**: Utility for creating variant-based component styles.
+- **clsx**: Utility for constructing `className` strings conditionally.
+- **lucide-react**: Beautiful & consistent icon library.
+- **next-themes**: Abstraction for themes (Dark/Light mode).
+- **react** & **react-dom**: JavaScript library for building user interfaces.
+- **react-icons**: Include popular icons in your React projects easily.
+- **react-redux**: Official React bindings for Redux.
+- **react-router-dom**: Declarative routing for React web applications.
+- **sonner**: An opinionated toast component for React.
+- **tailwind-merge**: Utility to merge Tailwind CSS classes preventing conflicts.
+- **tailwindcss**: Utility-first CSS framework.
+- **tailwindcss-animate**: Tailwind CSS plugin for adding animations.

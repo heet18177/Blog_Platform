@@ -1,0 +1,21 @@
+# Server Installation Guide
+
+## Dependencies
+Run the following command in the `server` directory:
+
+```bash
+npm install bcryptjs cloudinary cookie-parser cors dotenv express joi jsonwebtoken mongoose multer nodemon
+```
+
+### Package Descriptions:
+- **bcryptjs**: Library for hashing passwords.
+- **cloudinary**: Cloud service for image and video management.
+- **cookie-parser**: Middleware to parse cookies attached to the client request object.
+- **cors**: Middleware to enable Cross-Origin Resource Sharing.
+- **dotenv**: Loads environment variables from a `.env` file.
+- **express**: Fast, unopinionated, minimalist web framework for Node.js.
+- **joi**: Object schema description language and validator for data validation.
+- **jsonwebtoken**: Implementation of JSON Web Tokens (JWT) for authentication.
+- **mongoose**: MongoDB object modeling tool designed to work in an asynchronous environment.
+- **multer**: Middleware for handling `multipart/form-data`, used for uploading files.
+- **nodemon**: Utility that monitors for changes in your source and automatically restarts your server.
