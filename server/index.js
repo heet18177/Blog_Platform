@@ -15,10 +15,16 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://blog-platform-client.onrender.com",
-    ],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      // Allow localhost
+      if (origin === "http://localhost:5173") return callback(null, true);
+      // Allow any onrender.com subdomain
+      if (origin.endsWith(".onrender.com")) return callback(null, true);
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
