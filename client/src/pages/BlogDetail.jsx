@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import { SERVER_URL } from "@/main";
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ const BlogDetail = () => {
     const fetchBlog = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/blogs/single/${id}`,
+          `${SERVER_URL}/api/blogs/single/${id}`,
           {
             withCredentials: true,
           }
@@ -52,7 +53,7 @@ const BlogDetail = () => {
     e.preventDefault();
     try {
       const result = await axios.post(
-        `http://localhost:5000/api/comments/add/${id}`,
+        `${SERVER_URL}/api/comments/add/${id}`,
         { text },
         { withCredentials: true }
       );
@@ -70,7 +71,7 @@ const BlogDetail = () => {
   const getComments = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:5000/api/comments/get/${id}`
+        `${SERVER_URL}/api/comments/get/${id}`
       );
       setShowComment(result.data.comments);
       console.log(result.data);
@@ -83,7 +84,7 @@ const BlogDetail = () => {
   const likeHandler = async () => {
     try {
       const result = await axios.put(
-        `http://localhost:5000/api/blogs/like/${id}`,
+        `${SERVER_URL}/api/blogs/like/${id}`,
         {},
         { withCredentials: true }
       );
@@ -100,7 +101,7 @@ const BlogDetail = () => {
   const commentLikeHandler = async (commentId) => {
     try {
       const result = await axios.put(
-        `http://localhost:5000/api/comments/toggle-like/${commentId}`,
+        `${SERVER_URL}/api/comments/toggle-like/${commentId}`,
         {},
         { withCredentials: true }
       );

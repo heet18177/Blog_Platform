@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
+import { SERVER_URL } from "@/main";
 import { setUserdata } from "@/redux/Userslice";
 import axios from "axios";
 import React, { useState } from "react";
@@ -18,7 +19,7 @@ const Login = () => {
 
     try {
       const result = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${SERVER_URL}/api/auth/login`,
         {
           email,
           password,
@@ -30,7 +31,7 @@ const Login = () => {
       // Fetch user data after successful login to ensure state is updated before navigation
       try {
         const userResult = await axios.get(
-          "http://localhost:5000/api/auth/get-current-user",
+          `${SERVER_URL}/api/auth/get-current-user`,
           { withCredentials: true }
         );
         if (userResult.data && userResult.data.user) {

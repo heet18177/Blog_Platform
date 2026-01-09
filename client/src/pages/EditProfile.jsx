@@ -5,6 +5,7 @@ import { setUserdata } from "@/redux/Userslice";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
+import { SERVER_URL } from "@/main";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const EditProfile = () => {
       }
 
       const res = await axios.put(
-        "http://localhost:5000/api/auth/editProfile",
+        `${SERVER_URL}/api/auth/editProfile`,
         formData,
         { withCredentials: true }
       );

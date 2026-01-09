@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { Trash2, SquarePen } from "lucide-react";
 import { toast } from "sonner";
+import { SERVER_URL } from "@/main";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -29,7 +30,7 @@ const Blog = () => {
 
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/blogs/all", {
+        const res = await axios.get(`${SERVER_URL}/api/blogs/all`, {
           withCredentials: true,
         });
         setBlogs(res.data.blogs);

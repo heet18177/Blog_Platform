@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { setUserdata } from "@/redux/Userslice";
+import { SERVER_URL } from "@/main";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,7 +21,7 @@ const Signup = () => {
 
     try {
       const result = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${SERVER_URL}/api/auth/register`,
         {
           firstName,
           lastName,
@@ -33,7 +34,7 @@ const Signup = () => {
       
       try {
         const userResult = await axios.get(
-          "http://localhost:5000/api/auth/get-current-user",
+          `${SERVER_URL}/api/auth/get-current-user`,
           { withCredentials: true }
         );
         if (userResult.data && userResult.data.user) {
