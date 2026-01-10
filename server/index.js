@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-   origin : ["http://localhost:5173", "https://blog-platform-nine-rosy.vercel.app"],
+   origin : ["http://localhost:5173", "https://blog-platform-git-main-heet18177s-projects.vercel.app"],
     credentials: true,
   })
 );
