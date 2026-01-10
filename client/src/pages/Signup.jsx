@@ -52,10 +52,6 @@ const Signup = () => {
       }
 
       console.log(result.data);
-      // Save token to localStorage
-      if (result.data.token) {
-        localStorage.setItem("token", result.data.token);
-      }
       setFirstName("");
       setLastName("");
       setEmail("");
