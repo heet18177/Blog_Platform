@@ -1,9 +1,7 @@
-
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { User } from './../models/User.js';
+import { User } from "./../models/User.js";
 import cloudinary from "../configs/cloudinary.js";
-
 
 // Register
 export const register = async (req, res) => {
@@ -40,7 +38,7 @@ export const register = async (req, res) => {
 
     // generate token
     const token = jwt.sign(
-      { _id: createUser._id , role: createUser.role},
+      { _id: createUser._id, role: createUser.role },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
@@ -58,7 +56,6 @@ export const register = async (req, res) => {
       user: createUser,
       token,
     });
-
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -68,7 +65,6 @@ export const register = async (req, res) => {
   }
 };
 
-
 // Login
 export const login = async (req, res) => {
   try {
@@ -77,8 +73,8 @@ export const login = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Both fields is required...'
-      })
+        message: "Both fields is required...",
+      });
     }
 
     // if user not exist
@@ -86,7 +82,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res.status(500).json({
         success: false,
-        message: 'Sign up first...'
+        message: "Sign up first...",
       });
     }
 
@@ -95,15 +91,15 @@ export const login = async (req, res) => {
     if (!matchPass) {
       return res.status(400).json({
         success: false,
-        message: 'Password is incorrect...',
+        message: "Password is incorrect...",
       });
     }
 
     // Generate token
     const token = jwt.sign(
-      { _id: user._id , role: user.role },
+      { _id: user._id, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" },
+      { expiresIn: "7d" }
     );
 
     res.cookie("token", token, {
@@ -114,9 +110,10 @@ export const login = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: 'User login successfully...',
+      message: "User login successfully...",
+      token,
+      user,
     });
-
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -124,8 +121,7 @@ export const login = async (req, res) => {
       message: "Failed to login...",
     });
   }
-}
-
+};
 
 // Logout
 export const logout = async (req, res) => {
@@ -139,7 +135,7 @@ export const logout = async (req, res) => {
     success: true,
     message: "Logout successful...",
   });
-}
+};
 
 export const editProfile = async (req, res) => {
   try {
@@ -156,11 +152,9 @@ export const editProfile = async (req, res) => {
       updateData.photoUrl = upload.secure_url;
     }
 
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      updateData,
-      { new: true }
-    ).select("-password");
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+      new: true,
+    }).select("-password");
 
     res.status(200).json({
       success: true,
@@ -175,9 +169,8 @@ export const editProfile = async (req, res) => {
   }
 };
 
-
-export const getCurrentuser = async(req,res)=>{
-  try{
+export const getCurrentuser = async (req, res) => {
+  try {
     const user = await User.findById(req.user._id);
     res.status(200).json({
       success: true,
@@ -190,4 +183,4 @@ export const getCurrentuser = async(req,res)=>{
       message: "Failed to get current user...",
     });
   }
-}
+};

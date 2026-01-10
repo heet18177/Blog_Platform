@@ -31,7 +31,7 @@ const Signup = () => {
         { withCredentials: true }
       );
       toast.success("User signup successfull...");
-      
+
       try {
         const userResult = await axios.get(
           `${SERVER_URL}/api/auth/get-current-user`,
@@ -52,6 +52,10 @@ const Signup = () => {
       }
 
       console.log(result.data);
+      // Save token to localStorage
+      if (result.data.token) {
+        localStorage.setItem("token", result.data.token);
+      }
       setFirstName("");
       setLastName("");
       setEmail("");

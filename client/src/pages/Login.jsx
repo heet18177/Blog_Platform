@@ -49,6 +49,11 @@ const Login = () => {
       }
 
       console.log(result.data);
+      // Save token to localStorage
+      if (result.data.token) {
+        localStorage.setItem("token", result.data.token);
+      }
+
       // Clear form after successful signup
       setEmail("");
       setPassword("");
